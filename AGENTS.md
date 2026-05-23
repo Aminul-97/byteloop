@@ -1,0 +1,2 @@
+- Always try to find the minimal solution.
+- Always don't perform any git stuff.
