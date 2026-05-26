@@ -1,0 +1,79 @@
+{{ define "main" }}
+<div class="container fade-in">
+  
+  <!-- HERO SECTION -->
+  <section class="hero">
+    <div class="hero-badge">⚡ Introducing Custom Themes v1.0</div>
+    <h1>Create Beautiful Sites with <span class="gradient-text">Hugo & Vanilla CSS</span></h1>
+    <p class="hero-lead">
+      Experience the speed of a static site generator combined with the luxury of modern, premium dark UI aesthetics. Fully responsive, highly optimized, and zero dependencies.
+    </p>
+    <div class="hero-actions">
+      <a href="#" class="btn btn-primary">
+        Get Started Free
+        <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"/>
+        </svg>
+      </a>
+      <a href="#" class="btn btn-secondary">Explore Documentation</a>
+    </div>
+  </section>
+
+  <!-- FEATURES SECTION -->
+  <section class="content-section" style="border-top: 1px solid var(--border-subtle); padding-top: 5rem;">
+    <div style="text-align: center; max-width: 600px; margin: 0 auto 3rem auto;">
+      <h2 style="font-size: 2.25rem; margin-bottom: 1rem;">Engineered for Visual Excellence</h2>
+      <p style="color: var(--text-muted);">
+        Every component is crafted with pixel-perfect accuracy, utilizing modern CSS features to deliver a superior user experience.
+      </p>
+    </div>
+    
+    <div class="card-grid">
+      <!-- Card 1 -->
+      <div class="card">
+        <div class="card-icon" style="background-color: var(--color-primary-glow); color: var(--color-primary);">
+          <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 13.5l10.5-11.25L12 10.5h8.25L9.75 21.75 12 13.5H3.75z"/>
+          </svg>
+        </div>
+        <h3>Lightning Fast</h3>
+        <p>Built with native Hugo templates and pure Vanilla CSS. Enjoy sub-millisecond build speeds and perfect Google Lighthouse scores.</p>
+      </div>
+
+      <!-- Card 2 -->
+      <div class="card">
+        <div class="card-icon" style="background-color: var(--color-accent-glow); color: var(--color-accent);">
+          <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M9.813 15.904L9 21l8.904-4.43c.895-.445 1.558-1.283 1.832-2.224l.09-.31a9.047 9.047 0 000-5.072l-.09-.308a3.75 3.75 0 00-1.832-2.224L9 2.1 9.813 7.2m0 8.704l-3.328-1.664A3.75 3.75 0 014.28 10.97l-.09-.308a9.034 9.034 0 010-5.072l.09-.308a3.75 3.75 0 012.204-2.266L9.813 4.5m0 11.404L9.813 4.5M9.813 4.5L12 3m0 18l-2.187-1.5"/>
+          </svg>
+        </div>
+        <h3>Premium Aesthetics</h3>
+        <p>Pre-configured dark-mode layouts, rich typography, smooth glassmorphism layers, and harmonized gradient palettes designed to impress.</p>
+      </div>
+
+      <!-- Card 3 -->
+      <div class="card">
+        <div class="card-icon" style="background-color: var(--color-secondary-glow); color: var(--color-secondary);">
+          <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M10.5 6h9.75M10.5 6a1.5 1.5 0 11-3 0m3 0a1.5 1.5 0 10-3 0M3.75 6H7.5m3 12h9.75m-9.75 0a1.5 1.5 0 01-3 0m3 0a1.5 1.5 0 00-3 0m-3.75 0H7.5m9-6h3.75m-3.75 0a1.5 1.5 0 01-3 0m3 0a1.5 1.5 0 00-3 0m-9.75 0h9.75"/>
+          </svg>
+        </div>
+        <h3>Fully Customizable</h3>
+        <p>Simple and clean structural components. Tweak layout behaviors and theme properties easily using global CSS custom variables.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA CONVERSION SECTION -->
+  <section class="content-section" style="margin-top: 5rem; text-align: center;">
+    <div style="background: var(--cta-bg); border: 1px solid var(--border-subtle); border-radius: var(--border-radius-lg); padding: 4.5rem 2rem; position: relative; overflow: hidden;">
+      <h2 style="font-size: 2.5rem; margin-bottom: 1.25rem;">Start building your custom site today</h2>
+      <p style="color: var(--text-muted); max-width: 550px; margin: 0 auto 2.5rem auto; font-size: 1.1rem;">
+        Deploy instantly, configure dynamically, and showcase your thoughts using the world's most elegant Hugo boilerplate.
+      </p>
+      <a href="#" class="btn btn-primary" style="padding: 0.9rem 2.2rem; font-size: 1rem;">Deploy to Vercel/Netlify</a>
+    </div>
+  </section>
+
+</div>
+{{ end }}

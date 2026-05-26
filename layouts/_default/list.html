@@ -1,0 +1,49 @@
+{{ define "main" }}
+<div class="container fade-in" style="max-width: 900px; padding-top: 5rem; padding-bottom: 5rem;">
+  <header style="margin-bottom: 4rem; text-align: center;">
+    <h1 style="font-size: clamp(2.5rem, 5vw, 3.5rem); margin-bottom: 1rem;" class="gradient-text">{{ .Title }}</h1>
+    {{ if .Description }}
+      <p style="color: var(--text-muted); font-size: 1.15rem; max-width: 600px; margin: 0 auto;">
+        {{ .Description }}
+      </p>
+    {{ else }}
+      <p style="color: var(--text-muted); font-size: 1.15rem; max-width: 600px; margin: 0 auto;">
+        Discover interesting stories, detailed guides, and news.
+      </p>
+    {{ end }}
+    <div style="width: 60px; height: 3px; background: linear-gradient(90deg, var(--color-primary), var(--color-accent)); margin: 2rem auto 0 auto; border-radius: 100px;"></div>
+  </header>
+
+  <div style="display: flex; flex-direction: column; gap: 2rem;">
+    {{ range .Pages }}
+      <article class="card" style="padding: 2.5rem; text-align: left;">
+        <header style="margin-bottom: 1rem;">
+          {{ if .Date }}
+            <time style="color: var(--color-accent); font-size: 0.8rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; display: inline-block; margin-bottom: 0.5rem;">
+              {{ .Date.Format "January 2, 2006" }}
+            </time>
+          {{ end }}
+          <h2 style="font-size: 1.75rem; font-weight: 700; margin-bottom: 0.75rem; line-height: 1.2;">
+            <a href="{{ .Permalink }}" style="color: var(--text-bright); transition: var(--transition-smooth);" onmouseover="this.style.color='var(--color-primary)'" onmouseout="this.style.color='var(--text-bright)'">
+              {{ .Title }}
+            </a>
+          </h2>
+        </header>
+        <p style="color: var(--text-muted); margin-bottom: 1.5rem; font-size: 1rem; line-height: 1.6;">
+          {{ .Summary }}
+        </p>
+        <a href="{{ .Permalink }}" class="btn btn-secondary" style="padding: 0.5rem 1.1rem; font-size: 0.85rem;">
+          Read More
+          <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"/>
+          </svg>
+        </a>
+      </article>
+    {{ else }}
+      <div style="text-align: center; padding: 4rem 2rem; background-color: var(--bg-card); border-radius: var(--border-radius-md); border: 1px solid var(--border-subtle);">
+        <p style="color: var(--text-muted); font-size: 1.1rem;">No pages found in this section.</p>
+      </div>
+    {{ end }}
+  </div>
+</div>
+{{ end }}

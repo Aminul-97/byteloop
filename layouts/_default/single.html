@@ -1,0 +1,24 @@
+{{ define "main" }}
+<article class="container fade-in" style="max-width: 800px; padding-top: 5rem; padding-bottom: 5rem;">
+  <header style="margin-bottom: 3.5rem; text-align: center;">
+    {{ if .Date }}
+      <time style="color: var(--color-accent); font-size: 0.85rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; display: inline-block; margin-bottom: 0.75rem;">
+        {{ .Date.Format "January 2, 2006" }}
+      </time>
+    {{ end }}
+    <h1 style="font-size: clamp(2.25rem, 4.5vw, 3.5rem); margin-bottom: 1.5rem; line-height: 1.15;" class="gradient-text">{{ .Title }}</h1>
+    
+    {{ if .Description }}
+      <p style="font-size: 1.2rem; color: var(--text-muted); max-width: 650px; margin: 0 auto; line-height: 1.6;">
+        {{ .Description }}
+      </p>
+    {{ end }}
+    
+    <div style="width: 60px; height: 3px; background: linear-gradient(90deg, var(--color-primary), var(--color-accent)); margin: 2rem auto 0 auto; border-radius: 100px;"></div>
+  </header>
+
+  <div class="content-body" style="font-size: 1.1rem; line-height: 1.8; color: var(--text-normal);">
+    {{ .Content }}
+  </div>
+</article>
+{{ end }}
