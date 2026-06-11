@@ -1,10 +1,28 @@
-<header class="navbar-header">
+<header class="navbar-header" id="navbar-header">
   <div class="container navbar-container">
-    <a href="{{ "/" | relURL }}" class="logo">
-      <div class="logo-icon">B</div>
-      <span>{{ .Site.Title }}</span>
+
+    <!-- Logo -->
+    <a href="{{ "/" | relURL }}" class="logo" aria-label="Byteloop Home">
+      <svg class="logo-svg" width="28" height="28" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" style="filter: drop-shadow(0 0 8px rgba(96,224,110,0.4));">
+        <!-- Hexagonal loop mark -->
+        <polygon points="16,3 27,9.5 27,22.5 16,29 5,22.5 5,9.5" stroke="url(#nlogoG1)" stroke-width="2" fill="none" stroke-linejoin="round"/>
+        <polygon points="16,8 23,12 23,20 16,24 9,20 9,12" stroke="url(#nlogoG2)" stroke-width="1.5" fill="none" stroke-linejoin="round" stroke-dasharray="3 3"/>
+        <circle cx="16" cy="16" r="2.5" fill="#60e06e"/>
+        <defs>
+          <linearGradient id="nlogoG1" x1="5" y1="3" x2="27" y2="29" gradientUnits="userSpaceOnUse">
+            <stop stop-color="#60e06e"/>
+            <stop offset="1" stop-color="#eec679"/>
+          </linearGradient>
+          <linearGradient id="nlogoG2" x1="9" y1="8" x2="23" y2="24" gradientUnits="userSpaceOnUse">
+            <stop stop-color="#697c68"/>
+            <stop offset="1" stop-color="#60e06e"/>
+          </linearGradient>
+        </defs>
+      </svg>
+      <span class="logo-wordmark">byteloop</span>
     </a>
-    
+
+    <!-- Nav Links -->
     <nav aria-label="Main Navigation">
       <ul class="nav-links" id="nav-links">
         {{ if .Site.Menus.main }}
@@ -17,56 +35,26 @@
           {{ end }}
         {{ else }}
           <li><a href="{{ "/" | relURL }}" class="nav-link active">Home</a></li>
-          <li><a href="#" class="nav-link">Features</a></li>
-          <li><a href="#" class="nav-link">Pricing</a></li>
-          <li><a href="#" class="nav-link">About</a></li>
-          <li><a href="#" class="nav-link">Contact</a></li>
+          <li><a href="#services" class="nav-link">Services</a></li>
+          <li><a href="#process" class="nav-link">Process</a></li>
+          <li><a href="#roi-calculator" class="nav-link">ROI</a></li>
+          <li><a href="#contact" class="nav-link">Contact</a></li>
         {{ end }}
       </ul>
     </nav>
 
+    <!-- Right actions -->
     <div class="navbar-right">
-
       <div class="nav-actions">
-        <a href="#" class="btn btn-secondary" style="padding: 0.55rem 1.1rem; font-size: 0.9rem;">Sign In</a>
-        <a href="#" class="btn btn-primary" style="padding: 0.55rem 1.1rem; font-size: 0.9rem;">Get Started</a>
+        <a href="#contact" class="btn btn-primary" id="nav-cta">Get Started</a>
       </div>
 
-      <button class="menu-toggle" id="menu-toggle" aria-label="Toggle Menu" aria-expanded="false">
+      <button class="menu-toggle" id="menu-toggle" aria-label="Toggle Navigation Menu" aria-expanded="false">
         <span></span>
         <span></span>
         <span></span>
       </button>
     </div>
+
   </div>
 </header>
-
-<script>
-  document.addEventListener('DOMContentLoaded', () => {
-    const toggle = document.getElementById('menu-toggle');
-    const navLinks = document.getElementById('nav-links');
-    
-    if (toggle && navLinks) {
-      toggle.addEventListener('click', () => {
-        const isOpen = navLinks.classList.toggle('active');
-        toggle.classList.toggle('open');
-        toggle.setAttribute('aria-expanded', isOpen);
-      });
-    }
-
-
-  });
-</script>
-
-<style>
-  /* Local Hamburger Toggle Animation */
-  .menu-toggle.open span:nth-child(1) {
-    transform: translateY(7px) rotate(45deg);
-  }
-  .menu-toggle.open span:nth-child(2) {
-    opacity: 0;
-  }
-  .menu-toggle.open span:nth-child(3) {
-    transform: translateY(-7px) rotate(-45deg);
-  }
-</style>

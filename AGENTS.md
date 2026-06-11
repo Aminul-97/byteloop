@@ -24,12 +24,12 @@ We build custom software and intelligent automations that eliminate operational 
 
 
 ## Colors
-- #000001
-- #19183a
-- #3c269d
-- #7f30e4
-- #ae70f1
-- #cdbef1
+- #000100
+- #111511
+- #40433b
+- #697c68
+- #60e06e
+- #eec679
 
 # NOTE
 - Always try to find the minimal solution.

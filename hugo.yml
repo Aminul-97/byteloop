@@ -1,3 +1,7 @@
-baseURL: 'https://example.org/'
+baseURL: 'https://byteloop.co/'
 locale: 'en-us'
-title: 'My New Hugo Project'
+title: 'Byteloop | Custom Software & AI Automation'
+params:
+  description: 'We build custom software and intelligent automations that eliminate operational bottlenecks, streamline workflows, and scale your vision.'
+  author:
+    name: 'Byteloop'

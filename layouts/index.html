@@ -1,79 +1,936 @@
 {{ define "main" }}
-<div class="container fade-in">
-  
-  <!-- HERO SECTION -->
-  <section class="hero">
-    <div class="hero-badge">⚡ Introducing Custom Themes v1.0</div>
-    <h1>Create Beautiful Sites with <span class="gradient-text">Hugo & Vanilla CSS</span></h1>
-    <p class="hero-lead">
-      Experience the speed of a static site generator combined with the luxury of modern, premium dark UI aesthetics. Fully responsive, highly optimized, and zero dependencies.
-    </p>
-    <div class="hero-actions">
-      <a href="#" class="btn btn-primary">
-        Get Started Free
-        <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"/>
-        </svg>
-      </a>
-      <a href="#" class="btn btn-secondary">Explore Documentation</a>
-    </div>
-  </section>
 
-  <!-- FEATURES SECTION -->
-  <section class="content-section" style="border-top: 1px solid var(--border-subtle); padding-top: 5rem;">
-    <div style="text-align: center; max-width: 600px; margin: 0 auto 3rem auto;">
-      <h2 style="font-size: 2.25rem; margin-bottom: 1rem;">Engineered for Visual Excellence</h2>
-      <p style="color: var(--text-muted);">
-        Every component is crafted with pixel-perfect accuracy, utilizing modern CSS features to deliver a superior user experience.
-      </p>
+<!-- ============================================================
+     HERO SECTION — Full-viewport immersive hero
+     ============================================================ -->
+<section class="hero" id="hero" aria-label="Hero">
+  <!-- Ambient background orbs -->
+  <div class="hero-orb hero-orb-1" aria-hidden="true"></div>
+  <div class="hero-orb hero-orb-2" aria-hidden="true"></div>
+  <div class="hero-orb hero-orb-3" aria-hidden="true"></div>
+  <!-- Dot grid -->
+  <div class="hero-grid" aria-hidden="true"></div>
+  <!-- Particle canvas -->
+  <canvas id="hero-canvas" aria-hidden="true"></canvas>
+
+  <div class="hero-content container">
+    <div class="hero-inner">
+
+      <!-- Left: Copy & CTAs -->
+      <div>
+        <!-- Eyebrow badge -->
+        <div class="hero-eyebrow">
+          <span class="hero-eyebrow-dot"></span>
+          Operations &bull; Automation &bull; Scale
+        </div>
+
+        <h1 class="hero-title">
+          Eliminate Bottlenecks.<br>
+          <span class="gradient-text">Streamline Workflows.</span><br>
+          Scale Your Vision.
+        </h1>
+
+        <p class="hero-lead">
+          We build custom software and intelligent automations that optimize your
+          business processes, synchronize cross-platform data, and modernize
+          legacy infrastructure — so your team can focus on growth.
+        </p>
+
+        <div class="hero-actions">
+          <a href="#contact" class="btn btn-primary" id="hero-cta-primary">
+            Schedule a Consultation
+            <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"/>
+            </svg>
+          </a>
+          <a href="#services" class="btn btn-outline" id="hero-cta-secondary">View Capabilities</a>
+        </div>
+
+        <!-- Social proof -->
+        <div class="hero-social-proof">
+          <div class="hero-avatars">
+            <div class="hero-avatar">AK</div>
+            <div class="hero-avatar">SM</div>
+            <div class="hero-avatar">JR</div>
+            <div class="hero-avatar">+</div>
+          </div>
+          <div class="hero-social-text">
+            <strong>Trusted by 40+ businesses</strong>
+            Operational bottlenecks solved
+          </div>
+        </div>
+      </div>
+
+      <!-- Right: Animated dashboard mockup -->
+      <div class="hero-visual" aria-hidden="true">
+        <!-- Floating badge top-right -->
+        <div class="hero-badge-float hero-badge-float-1">
+          <svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5" style="color:#60e06e">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5"/>
+          </svg>
+          Pipeline Active
+        </div>
+
+        <!-- Floating badge bottom-left -->
+        <div class="hero-badge-float hero-badge-float-2">
+          <svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" style="color:#eec679">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 13.5l10.5-11.25L12 10.5h8.25L9.75 21.75 12 13.5H3.75z"/>
+          </svg>
+          87% Efficiency Gain
+        </div>
+
+        <div class="hero-dashboard">
+          <!-- Browser chrome -->
+          <div class="dashboard-topbar">
+            <div class="dashboard-dots">
+              <span></span><span></span><span></span>
+            </div>
+            <div class="dashboard-url">byteloop.app/dashboard</div>
+          </div>
+
+          <!-- Stats row -->
+          <div class="dashboard-stats-row">
+            <div class="dash-stat">
+              <div class="dash-stat-val">$42K</div>
+              <div class="dash-stat-label">Saved / mo.</div>
+            </div>
+            <div class="dash-stat">
+              <div class="dash-stat-val">1.2K</div>
+              <div class="dash-stat-label">Tasks Auto.</div>
+            </div>
+            <div class="dash-stat">
+              <div class="dash-stat-val">99.9%</div>
+              <div class="dash-stat-label">Uptime</div>
+            </div>
+          </div>
+
+          <!-- Chart -->
+          <div class="dashboard-chart">
+            <svg class="chart-svg" viewBox="0 0 300 70" preserveAspectRatio="none" overflow="visible">
+              <defs>
+                <linearGradient id="chartGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+                  <stop offset="0%" stop-color="#40433b"/>
+                  <stop offset="100%" stop-color="#60e06e"/>
+                </linearGradient>
+                <linearGradient id="areaGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+                  <stop offset="0%" stop-color="#60e06e" stop-opacity="0.35"/>
+                  <stop offset="100%" stop-color="#60e06e" stop-opacity="0"/>
+                </linearGradient>
+              </defs>
+              <path class="chart-area" d="M0,60 L30,50 L60,42 L90,36 L120,28 L150,32 L180,20 L210,16 L240,10 L270,8 L300,4 L300,70 L0,70 Z"/>
+              <path class="chart-line" d="M0,60 L30,50 L60,42 L90,36 L120,28 L150,32 L180,20 L210,16 L240,10 L270,8 L300,4"/>
+            </svg>
+          </div>
+
+          <!-- Pipeline nodes -->
+          <div class="dashboard-pipeline">
+            <div class="pipe-node">
+              <span class="pipe-node-dot active"></span>
+              CRM Sync
+            </div>
+            <span class="pipe-arrow">→</span>
+            <div class="pipe-node">
+              <span class="pipe-node-dot pending"></span>
+              AI Parse
+            </div>
+            <span class="pipe-arrow">→</span>
+            <div class="pipe-node">
+              <span class="pipe-node-dot active"></span>
+              Reporting
+            </div>
+            <span class="pipe-arrow">→</span>
+            <div class="pipe-node">
+              <span class="pipe-node-dot idle"></span>
+              Notify
+            </div>
+          </div>
+        </div>
+      </div>
+
     </div>
-    
-    <div class="card-grid">
-      <!-- Card 1 -->
-      <div class="card">
-        <div class="card-icon" style="background-color: var(--color-primary-glow); color: var(--color-primary);">
-          <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+  </div>
+</section>
+
+<!-- ============================================================
+     STATS BAR — Trust / credibility
+     ============================================================ -->
+<div class="stats-bar">
+  <div class="container">
+    <div class="stats-grid">
+      <div class="stat-item reveal">
+        <div class="stat-value" data-target="40" data-suffix="+">0+</div>
+        <div class="stat-label">Businesses Served</div>
+      </div>
+      <div class="stat-item reveal reveal-delay-1">
+        <div class="stat-value" data-target="87" data-suffix="%">0%</div>
+        <div class="stat-label">Avg. Efficiency Gain</div>
+      </div>
+      <div class="stat-item reveal reveal-delay-2">
+        <div class="stat-value" data-target="320" data-suffix="+">0+</div>
+        <div class="stat-label">Workflows Automated</div>
+      </div>
+      <div class="stat-item reveal reveal-delay-3">
+        <div class="stat-value" data-target="99" data-suffix="%">0%</div>
+        <div class="stat-label">Client Retention</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ============================================================
+     TECH BAND — scrolling tech labels
+     ============================================================ -->
+<div class="tech-band">
+  <div class="tech-band-label">Technologies & Platforms We Work With</div>
+  <div class="tech-logos-wrap">
+    <div class="tech-logos" aria-hidden="true">
+      <span class="tech-logo-item">React</span>
+      <span class="tech-logo-item">Next.js</span>
+      <span class="tech-logo-item">Node.js</span>
+      <span class="tech-logo-item">PostgreSQL</span>
+      <span class="tech-logo-item">AWS</span>
+      <span class="tech-logo-item">Google Cloud</span>
+      <span class="tech-logo-item">Zapier</span>
+      <span class="tech-logo-item">Salesforce</span>
+      <span class="tech-logo-item">HubSpot</span>
+      <span class="tech-logo-item">Stripe</span>
+      <span class="tech-logo-item">OpenAI</span>
+      <span class="tech-logo-item">Docker</span>
+      <span class="tech-logo-item">Kubernetes</span>
+      <span class="tech-logo-item">GraphQL</span>
+      <!-- duplicate for seamless loop -->
+      <span class="tech-logo-item">React</span>
+      <span class="tech-logo-item">Next.js</span>
+      <span class="tech-logo-item">Node.js</span>
+      <span class="tech-logo-item">PostgreSQL</span>
+      <span class="tech-logo-item">AWS</span>
+      <span class="tech-logo-item">Google Cloud</span>
+      <span class="tech-logo-item">Zapier</span>
+      <span class="tech-logo-item">Salesforce</span>
+      <span class="tech-logo-item">HubSpot</span>
+      <span class="tech-logo-item">Stripe</span>
+      <span class="tech-logo-item">OpenAI</span>
+      <span class="tech-logo-item">Docker</span>
+      <span class="tech-logo-item">Kubernetes</span>
+      <span class="tech-logo-item">GraphQL</span>
+    </div>
+  </div>
+</div>
+
+<!-- ============================================================
+     SERVICES SECTION
+     ============================================================ -->
+<section id="services" class="section">
+  <div class="container">
+    <header class="section-header reveal">
+      <div class="section-eyebrow">Core Capabilities</div>
+      <h2 class="section-title">
+        Everything Your Business Needs to <span class="gradient-text">Operate at Scale</span>
+      </h2>
+      <p class="section-subtitle">
+        Specialized engineering services built to eliminate manual work, integrate systems,
+        and boost your team's operational leverage.
+      </p>
+    </header>
+
+    <div class="services-grid">
+
+      <!-- Service 1: Custom Software -->
+      <div class="service-card reveal" id="service-custom-software">
+        <div class="service-num">01 / Custom Software</div>
+        <div class="service-icon">
+          <div class="service-icon-bg"></div>
+          <svg width="26" height="26" fill="none" stroke="currentColor" stroke-width="1.75" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M9 17.25v1.007a3 3 0 01-.879 2.122L7.5 21h9l-.621-.621A3 3 0 0115 18.257V17.25m6-12V15a2.25 2.25 0 01-2.25 2.25H5.25A2.25 2.25 0 013 15V5.25M7.5 12h9"/>
+          </svg>
+        </div>
+        <h3 class="service-title">Business Applications</h3>
+        <p class="service-desc">
+          Tailored CRMs, ERPs, and internal operations dashboards modeled around
+          your actual workflows — removing administrative friction and giving your
+          team back hours every week.
+        </p>
+        <div class="service-tags">
+          <span class="service-tag">CRM</span>
+          <span class="service-tag">ERP</span>
+          <span class="service-tag">Internal Tools</span>
+        </div>
+      </div>
+
+      <!-- Service 2: Web & Mobile -->
+      <div class="service-card reveal reveal-delay-1" id="service-web-mobile">
+        <div class="service-num">02 / Digital Products</div>
+        <div class="service-icon">
+          <div class="service-icon-bg"></div>
+          <svg width="26" height="26" fill="none" stroke="currentColor" stroke-width="1.75" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M10.5 1.5H8.25A2.25 2.25 0 006 3.75v16.5a2.25 2.25 0 002.25 2.25h7.5A2.25 2.25 0 0018 20.25V3.75a2.25 2.25 0 00-2.25-2.25H13.5m-3 0V3h3V1.5m-3 0h3m-3 18.75h3"/>
+          </svg>
+        </div>
+        <h3 class="service-title">Web &amp; Mobile Apps</h3>
+        <p class="service-desc">
+          High-performance, responsive customer portals and business applications.
+          Crafted with modern frameworks for stellar speed, reliability, and
+          security that scales with your user base.
+        </p>
+        <div class="service-tags">
+          <span class="service-tag">React</span>
+          <span class="service-tag">Next.js</span>
+          <span class="service-tag">iOS / Android</span>
+        </div>
+      </div>
+
+      <!-- Service 3: Secure Portals -->
+      <div class="service-card reveal reveal-delay-2" id="service-portals">
+        <div class="service-num">03 / Client Portals</div>
+        <div class="service-icon">
+          <div class="service-icon-bg"></div>
+          <svg width="26" height="26" fill="none" stroke="currentColor" stroke-width="1.75" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M16.5 10.5V6.75a4.5 4.5 0 10-9 0v3.75m-.75 11.25h10.5a2.25 2.25 0 002.25-2.25v-6.75a2.25 2.25 0 00-2.25-2.25H6.75a2.25 2.25 0 00-2.25 2.25v6.75a2.25 2.25 0 002.25 2.25z"/>
+          </svg>
+        </div>
+        <h3 class="service-title">Secure Portals</h3>
+        <p class="service-desc">
+          Safe client and vendor gateways built to your access rules. Upload data,
+          view project metrics, check transaction status — all secured with
+          enterprise-grade authentication.
+        </p>
+        <div class="service-tags">
+          <span class="service-tag">Auth</span>
+          <span class="service-tag">RBAC</span>
+          <span class="service-tag">Encrypted</span>
+        </div>
+      </div>
+
+      <!-- Service 4: Data Syncing -->
+      <div class="service-card reveal" id="service-syncing">
+        <div class="service-num">04 / Workflow Automation</div>
+        <div class="service-icon">
+          <div class="service-icon-bg"></div>
+          <svg width="26" height="26" fill="none" stroke="currentColor" stroke-width="1.75" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M16.023 9.348h4.992v-.001M2.985 19.644v-4.992m0 0h4.992m-4.993 0l3.181 3.183a8.25 8.25 0 0013.803-3.7M4.031 9.865a8.25 8.25 0 0113.803-3.7l3.181 3.182m0-4.991v4.99"/>
+          </svg>
+        </div>
+        <h3 class="service-title">Cross-Platform Syncing</h3>
+        <p class="service-desc">
+          End the double-entry nightmare. We program automated synchronization
+          channels between your CRMs, databases, bookkeeping software, and
+          communication tools — in real time.
+        </p>
+        <div class="service-tags">
+          <span class="service-tag">Zapier Alt.</span>
+          <span class="service-tag">Webhooks</span>
+          <span class="service-tag">ETL</span>
+        </div>
+      </div>
+
+      <!-- Service 5: AI Pipelines -->
+      <div class="service-card reveal reveal-delay-1" id="service-ai">
+        <div class="service-num">05 / AI Automation</div>
+        <div class="service-icon">
+          <div class="service-icon-bg"></div>
+          <svg width="26" height="26" fill="none" stroke="currentColor" stroke-width="1.75" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 13.5l10.5-11.25L12 10.5h8.25L9.75 21.75 12 13.5H3.75z"/>
           </svg>
         </div>
-        <h3>Lightning Fast</h3>
-        <p>Built with native Hugo templates and pure Vanilla CSS. Enjoy sub-millisecond build speeds and perfect Google Lighthouse scores.</p>
+        <h3 class="service-title">AI Decision Pipelines</h3>
+        <p class="service-desc">
+          Smart email triage, document parsing, and automated routing networks.
+          Leverage LLM automation to parse incoming data and direct actions
+          instantly — without human intervention.
+        </p>
+        <div class="service-tags">
+          <span class="service-tag">LLM</span>
+          <span class="service-tag">NLP</span>
+          <span class="service-tag">Auto-routing</span>
+        </div>
       </div>
 
-      <!-- Card 2 -->
-      <div class="card">
-        <div class="card-icon" style="background-color: var(--color-accent-glow); color: var(--color-accent);">
-          <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M9.813 15.904L9 21l8.904-4.43c.895-.445 1.558-1.283 1.832-2.224l.09-.31a9.047 9.047 0 000-5.072l-.09-.308a3.75 3.75 0 00-1.832-2.224L9 2.1 9.813 7.2m0 8.704l-3.328-1.664A3.75 3.75 0 014.28 10.97l-.09-.308a9.034 9.034 0 010-5.072l.09-.308a3.75 3.75 0 012.204-2.266L9.813 4.5m0 11.404L9.813 4.5M9.813 4.5L12 3m0 18l-2.187-1.5"/>
+      <!-- Service 6: Cloud Modernization -->
+      <div class="service-card reveal reveal-delay-2" id="service-cloud">
+        <div class="service-num">06 / Modernization</div>
+        <div class="service-icon">
+          <div class="service-icon-bg"></div>
+          <svg width="26" height="26" fill="none" stroke="currentColor" stroke-width="1.75" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M12 16.5V9.75m0 0l3 3m-3-3l-3 3M6.75 19.5h10.5a2.25 2.25 0 002.25-2.25V5.25a2.25 2.25 0 00-2.25-2.25H6.75a2.25 2.25 0 00-2.25 2.25v12a2.25 2.25 0 002.25 2.25z"/>
           </svg>
         </div>
-        <h3>Premium Aesthetics</h3>
-        <p>Pre-configured dark-mode layouts, rich typography, smooth glassmorphism layers, and harmonized gradient palettes designed to impress.</p>
+        <h3 class="service-title">API &amp; Cloud Migration</h3>
+        <p class="service-desc">
+          Build clean custom APIs and overhaul outdated local networks or fragile
+          VPS scripts. We migrate your processes safely into secure, auto-scaling
+          cloud platforms like AWS or GCP.
+        </p>
+        <div class="service-tags">
+          <span class="service-tag">REST API</span>
+          <span class="service-tag">AWS</span>
+          <span class="service-tag">GCP</span>
+        </div>
       </div>
 
-      <!-- Card 3 -->
-      <div class="card">
-        <div class="card-icon" style="background-color: var(--color-secondary-glow); color: var(--color-secondary);">
-          <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M10.5 6h9.75M10.5 6a1.5 1.5 0 11-3 0m3 0a1.5 1.5 0 10-3 0M3.75 6H7.5m3 12h9.75m-9.75 0a1.5 1.5 0 01-3 0m3 0a1.5 1.5 0 00-3 0m-3.75 0H7.5m9-6h3.75m-3.75 0a1.5 1.5 0 01-3 0m3 0a1.5 1.5 0 00-3 0m-9.75 0h9.75"/>
-          </svg>
-        </div>
-        <h3>Fully Customizable</h3>
-        <p>Simple and clean structural components. Tweak layout behaviors and theme properties easily using global CSS custom variables.</p>
-      </div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- CTA CONVERSION SECTION -->
-  <section class="content-section" style="margin-top: 5rem; text-align: center;">
-    <div style="background: var(--cta-bg); border: 1px solid var(--border-subtle); border-radius: var(--border-radius-lg); padding: 4.5rem 2rem; position: relative; overflow: hidden;">
-      <h2 style="font-size: 2.5rem; margin-bottom: 1.25rem;">Start building your custom site today</h2>
-      <p style="color: var(--text-muted); max-width: 550px; margin: 0 auto 2.5rem auto; font-size: 1.1rem;">
-        Deploy instantly, configure dynamically, and showcase your thoughts using the world's most elegant Hugo boilerplate.
+<!-- ============================================================
+     ROI CALCULATOR
+     ============================================================ -->
+<section id="roi-calculator" class="section roi-section">
+  <div class="container">
+    <header class="section-header reveal">
+      <div class="section-eyebrow">ROI Calculator</div>
+      <h2 class="section-title">
+        Calculate Your <span class="gradient-text">Automation Savings</span>
+      </h2>
+      <p class="section-subtitle">
+        Estimate the monthly and annual value that Byteloop's intelligent automation
+        can recover for your business operations.
       </p>
-      <a href="#" class="btn btn-primary" style="padding: 0.9rem 2.2rem; font-size: 1rem;">Deploy to Vercel/Netlify</a>
-    </div>
-  </section>
+    </header>
 
-</div>
+    <div class="calculator-wrapper reveal">
+      <!-- Controls -->
+      <div>
+        <div class="calc-heading">Adjust Your Parameters</div>
+        <div class="calc-sub">Drag the sliders to match your business profile</div>
+
+        <div class="slider-group">
+          <div class="slider-top">
+            <span class="slider-label">Weekly Manual Work Hours</span>
+            <span class="slider-val" id="lbl-hours">20 hrs</span>
+          </div>
+          <input type="range" id="sl-hours" class="calc-slider" min="5" max="100" value="20" oninput="calcROI()" aria-label="Weekly manual hours">
+        </div>
+
+        <div class="slider-group">
+          <div class="slider-top">
+            <span class="slider-label">Avg. Employee Blended Rate</span>
+            <span class="slider-val" id="lbl-rate">$35/hr</span>
+          </div>
+          <input type="range" id="sl-rate" class="calc-slider" min="15" max="150" value="35" oninput="calcROI()" aria-label="Hourly rate">
+        </div>
+
+        <div class="slider-group">
+          <div class="slider-top">
+            <span class="slider-label">Estimated Efficiency Gain</span>
+            <span class="slider-val" id="lbl-eff">75%</span>
+          </div>
+          <input type="range" id="sl-eff" class="calc-slider" min="30" max="95" value="75" oninput="calcROI()" aria-label="Efficiency gain">
+        </div>
+      </div>
+
+      <!-- Results -->
+      <div class="calc-results">
+        <div class="result-block">
+          <div class="result-label">Monthly Savings</div>
+          <div id="res-monthly" class="result-value large">$2,275</div>
+        </div>
+        <div class="result-divider"></div>
+        <div class="result-block">
+          <div class="result-label">Annual Savings</div>
+          <div id="res-annual" class="result-value xlarge">$27,300</div>
+        </div>
+        <a href="#contact" class="btn btn-primary" style="width:100%;">
+          Discuss Your Potential
+          <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"/>
+          </svg>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     PROCESS / HOW WE WORK
+     ============================================================ -->
+<section id="process" class="section">
+  <div class="container">
+    <header class="section-header reveal">
+      <div class="section-eyebrow">Our Process</div>
+      <h2 class="section-title">
+        Engineered for <span class="gradient-text">Excellence at Every Step</span>
+      </h2>
+      <p class="section-subtitle">
+        Our structured approach ensures every project is delivered with precision,
+        speed, and results that compound over time.
+      </p>
+    </header>
+
+    <div class="process-steps">
+
+      <div class="process-step reveal">
+        <div class="step-number">Step 01</div>
+        <div class="step-icon">
+          <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z"/>
+          </svg>
+        </div>
+        <h3 class="step-title">Discovery &amp; Audit</h3>
+        <p class="step-desc">
+          We map your current workflows, identify bottlenecks, and analyze
+          data pipelines to find the highest-yield automation opportunities.
+        </p>
+      </div>
+
+      <div class="process-step reveal reveal-delay-1">
+        <div class="step-number">Step 02</div>
+        <div class="step-icon">
+          <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M9 12h3.75M9 15h3.75M9 18h3.75m3 .75H18a2.25 2.25 0 002.25-2.25V6.108c0-1.135-.845-2.098-1.976-2.192a48.424 48.424 0 00-1.123-.08m-5.801 0c-.065.21-.1.433-.1.664 0 .414.336.75.75.75h4.5a.75.75 0 00.75-.75 2.25 2.25 0 00-.1-.664m-5.8 0A2.251 2.251 0 0113.5 2.25H15c1.012 0 1.867.668 2.15 1.586m-5.8 0c-.376.023-.75.05-1.124.08C9.095 4.01 8.25 4.973 8.25 6.108V8.25m0 0H4.875c-.621 0-1.125.504-1.125 1.125v11.25c0 .621.504 1.125 1.125 1.125h9.75c.621 0 1.125-.504 1.125-1.125V9.375c0-.621-.504-1.125-1.125-1.125H8.25z"/>
+          </svg>
+        </div>
+        <h3 class="step-title">Architecture &amp; Design</h3>
+        <p class="step-desc">
+          We design the system architecture, API contracts, and UI/UX flows
+          before a single line of code is written — ensuring a clean, robust foundation.
+        </p>
+      </div>
+
+      <div class="process-step reveal reveal-delay-2">
+        <div class="step-number">Step 03</div>
+        <div class="step-icon">
+          <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M14.25 9.75L16.5 12l-2.25 2.25m-4.5 0L7.5 12l2.25-2.25M6 20.25h12A2.25 2.25 0 0020.25 18V6A2.25 2.25 0 0018 3.75H6A2.25 2.25 0 003.75 6v12A2.25 2.25 0 006 20.25z"/>
+          </svg>
+        </div>
+        <h3 class="step-title">Build &amp; Integrate</h3>
+        <p class="step-desc">
+          Rapid, iterative development with weekly check-ins. We connect all
+          your systems, deploy automations, and test every edge case rigorously.
+        </p>
+      </div>
+
+      <div class="process-step reveal reveal-delay-3">
+        <div class="step-number">Step 04</div>
+        <div class="step-icon">
+          <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M3 13.125C3 12.504 3.504 12 4.125 12h2.25c.621 0 1.125.504 1.125 1.125v6.75C7.5 20.496 6.996 21 6.375 21h-2.25A1.125 1.125 0 013 19.875v-6.75zM9.75 8.625c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125v11.25c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 01-1.125-1.125V8.625zM16.5 4.125c0-.621.504-1.125 1.125-1.125h2.25C20.496 3 21 3.504 21 4.125v15.75c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 01-1.125-1.125V4.125z"/>
+          </svg>
+        </div>
+        <h3 class="step-title">Launch &amp; Optimize</h3>
+        <p class="step-desc">
+          We deploy, monitor, and continuously optimize. Real-time dashboards
+          give you full visibility into performance and ROI from day one.
+        </p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     TESTIMONIALS TICKER
+     ============================================================ -->
+<section class="testimonials-section" aria-label="Client testimonials">
+  <div class="container">
+    <header class="section-header reveal" style="margin-bottom: 2.5rem;">
+      <div class="section-eyebrow">What Clients Say</div>
+      <h2 class="section-title" style="font-size: clamp(1.6rem, 3vw, 2.2rem);">
+        Real Results, <span class="gradient-text">Real Businesses</span>
+      </h2>
+    </header>
+  </div>
+  <div class="testimonials-ticker-wrap">
+    <div class="testimonials-ticker">
+      <!-- Card 1 -->
+      <div class="testimonial-card">
+        <div class="testimonial-stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
+        <p class="testimonial-text">"Byteloop automated our entire order processing pipeline. What used to take 3 hours a day now runs while we sleep. An absolute game-changer."</p>
+        <div class="testimonial-author">
+          <div class="testimonial-avatar">AK</div>
+          <div>
+            <div class="testimonial-name">Alex Kim</div>
+            <div class="testimonial-role">COO, Meridian Logistics</div>
+          </div>
+        </div>
+      </div>
+      <!-- Card 2 -->
+      <div class="testimonial-card">
+        <div class="testimonial-stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
+        <p class="testimonial-text">"The custom CRM they built for us is head and shoulders above anything off-the-shelf. It actually fits our business, not the other way around."</p>
+        <div class="testimonial-author">
+          <div class="testimonial-avatar" style="background: linear-gradient(135deg, #eec679, #d4a852); color:#000100;">SM</div>
+          <div>
+            <div class="testimonial-name">Sarah Mitchell</div>
+            <div class="testimonial-role">CEO, Apex Realty Group</div>
+          </div>
+        </div>
+      </div>
+      <!-- Card 3 -->
+      <div class="testimonial-card">
+        <div class="testimonial-stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
+        <p class="testimonial-text">"We migrated 8 years of legacy data and modernized our entire stack in 6 weeks. Zero downtime. These guys are exceptional engineers."</p>
+        <div class="testimonial-author">
+          <div class="testimonial-avatar" style="background: linear-gradient(135deg, #697c68, #60e06e); color:#000100;">JR</div>
+          <div>
+            <div class="testimonial-name">James Rodriguez</div>
+            <div class="testimonial-role">CTO, NovaTech Solutions</div>
+          </div>
+        </div>
+      </div>
+      <!-- Card 4 -->
+      <div class="testimonial-card">
+        <div class="testimonial-stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
+        <p class="testimonial-text">"Our AI email triage system now handles 400+ inquiries a day automatically. Customer response time dropped from 2 days to under 2 hours."</p>
+        <div class="testimonial-author">
+          <div class="testimonial-avatar" style="background: linear-gradient(135deg, #40433b, #697c68); color:#fff;">PL</div>
+          <div>
+            <div class="testimonial-name">Priya Lawson</div>
+            <div class="testimonial-role">Head of Ops, CloudBase Inc.</div>
+          </div>
+        </div>
+      </div>
+      <!-- Card 5 -->
+      <div class="testimonial-card">
+        <div class="testimonial-stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
+        <p class="testimonial-text">"We saved $38K in the first quarter alone just from the workflow automations. The ROI was visible within 3 weeks of launch."</p>
+        <div class="testimonial-author">
+          <div class="testimonial-avatar" style="background: linear-gradient(135deg, #60e06e, #eec679); color:#000100;">TW</div>
+          <div>
+            <div class="testimonial-name">Tom Wheeler</div>
+            <div class="testimonial-role">Founder, Stackable SaaS</div>
+          </div>
+        </div>
+      </div>
+      <!-- Duplicates for infinite scroll -->
+      <div class="testimonial-card">
+        <div class="testimonial-stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
+        <p class="testimonial-text">"Byteloop automated our entire order processing pipeline. What used to take 3 hours a day now runs while we sleep. An absolute game-changer."</p>
+        <div class="testimonial-author">
+          <div class="testimonial-avatar">AK</div>
+          <div>
+            <div class="testimonial-name">Alex Kim</div>
+            <div class="testimonial-role">COO, Meridian Logistics</div>
+          </div>
+        </div>
+      </div>
+      <div class="testimonial-card">
+        <div class="testimonial-stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
+        <p class="testimonial-text">"The custom CRM they built for us is head and shoulders above anything off-the-shelf. It actually fits our business, not the other way around."</p>
+        <div class="testimonial-author">
+          <div class="testimonial-avatar" style="background: linear-gradient(135deg, #eec679, #d4a852); color:#000100;">SM</div>
+          <div>
+            <div class="testimonial-name">Sarah Mitchell</div>
+            <div class="testimonial-role">CEO, Apex Realty Group</div>
+          </div>
+        </div>
+      </div>
+      <div class="testimonial-card">
+        <div class="testimonial-stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
+        <p class="testimonial-text">"We migrated 8 years of legacy data and modernized our entire stack in 6 weeks. Zero downtime. These guys are exceptional engineers."</p>
+        <div class="testimonial-author">
+          <div class="testimonial-avatar" style="background: linear-gradient(135deg, #697c68, #60e06e); color:#000100;">JR</div>
+          <div>
+            <div class="testimonial-name">James Rodriguez</div>
+            <div class="testimonial-role">CTO, NovaTech Solutions</div>
+          </div>
+        </div>
+      </div>
+      <div class="testimonial-card">
+        <div class="testimonial-stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
+        <p class="testimonial-text">"Our AI email triage system now handles 400+ inquiries a day automatically. Customer response time dropped from 2 days to under 2 hours."</p>
+        <div class="testimonial-author">
+          <div class="testimonial-avatar" style="background: linear-gradient(135deg, #40433b, #697c68); color:#fff;">PL</div>
+          <div>
+            <div class="testimonial-name">Priya Lawson</div>
+            <div class="testimonial-role">Head of Ops, CloudBase Inc.</div>
+          </div>
+        </div>
+      </div>
+      <div class="testimonial-card">
+        <div class="testimonial-stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
+        <p class="testimonial-text">"We saved $38K in the first quarter alone just from the workflow automations. The ROI was visible within 3 weeks of launch."</p>
+        <div class="testimonial-author">
+          <div class="testimonial-avatar" style="background: linear-gradient(135deg, #60e06e, #eec679); color:#000100;">TW</div>
+          <div>
+            <div class="testimonial-name">Tom Wheeler</div>
+            <div class="testimonial-role">Founder, Stackable SaaS</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     CONTACT / CTA SECTION
+     ============================================================ -->
+<section id="contact" class="section cta-section">
+  <div class="container">
+    <div class="cta-inner reveal">
+      <div class="section-eyebrow" style="justify-content:center; margin-bottom:1.5rem;">
+        Get Started Today
+      </div>
+      <h2 class="cta-title">
+        Ready to <span class="gradient-text">Scale Your Vision</span>?
+      </h2>
+      <p class="cta-sub">
+        Connect with Byteloop for a direct technical review. We'll identify
+        your highest-value automation opportunities and show you the exact ROI.
+      </p>
+
+      <div class="contact-form-wrapper" id="contact-form-wrapper">
+        <form id="consultation-form" onsubmit="handleSubmit(event)" novalidate>
+          <div class="form-grid-2">
+            <div class="form-group">
+              <label class="form-label" for="client-name">Full Name</label>
+              <input type="text" id="client-name" class="form-input" placeholder="Alex Morgan" required autocomplete="name">
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="client-email">Business Email</label>
+              <input type="email" id="client-email" class="form-input" placeholder="alex@company.com" required autocomplete="email">
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="client-company">Company Name</label>
+            <input type="text" id="client-company" class="form-input" placeholder="Acme Corp" autocomplete="organization">
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="client-interest">Primary Need</label>
+            <select id="client-interest" class="form-input" required>
+              <option value="" disabled selected>Select a service area</option>
+              <option value="software">Custom Software Development</option>
+              <option value="automation">Workflow &amp; AI Automation</option>
+              <option value="integration">API &amp; Cloud Modernization</option>
+              <option value="portal">Client / Vendor Portals</option>
+              <option value="other">General Review</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="client-message">Describe the Bottleneck</label>
+            <textarea id="client-message" class="form-input" rows="4" placeholder="Tell us about the systems you'd like to automate or build..." required></textarea>
+          </div>
+          <button type="submit" id="form-submit-btn" class="btn btn-primary form-submit">
+            Request Consultation &amp; Review
+            <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"/>
+            </svg>
+          </button>
+        </form>
+
+        <!-- Success state -->
+        <div id="form-success">
+          <div class="success-icon">
+            <svg width="26" height="26" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5"/>
+            </svg>
+          </div>
+          <h3 style="color:#fff; font-size:1.35rem; margin-bottom:0.75rem;">Request Received!</h3>
+          <p style="color:#b8c4b7; font-size:0.9rem; line-height:1.7;">
+            Thank you! Our engineering team will review your details and
+            reach out within <strong style="color:#60e06e">24 hours</strong>.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     JAVASCRIPT
+     ============================================================ -->
+<script>
+/* ---- Navbar scroll state ---- */
+const navHeader = document.querySelector('.navbar-header');
+window.addEventListener('scroll', () => {
+  navHeader?.classList.toggle('scrolled', window.scrollY > 40);
+}, { passive: true });
+
+/* ---- Mobile menu ---- */
+document.addEventListener('DOMContentLoaded', () => {
+  const toggle = document.getElementById('menu-toggle');
+  const navLinks = document.getElementById('nav-links');
+  if (toggle && navLinks) {
+    toggle.addEventListener('click', () => {
+      const open = navLinks.classList.toggle('active');
+      toggle.classList.toggle('open', open);
+      toggle.setAttribute('aria-expanded', open);
+    });
+    navLinks.querySelectorAll('.nav-link').forEach(link => {
+      link.addEventListener('click', () => {
+        navLinks.classList.remove('active');
+        toggle.classList.remove('open');
+        toggle.setAttribute('aria-expanded', false);
+      });
+    });
+  }
+});
+
+/* ---- Card spotlight mouse glow ---- */
+document.addEventListener('DOMContentLoaded', () => {
+  document.querySelectorAll('.service-card, .card').forEach(card => {
+    card.addEventListener('mousemove', e => {
+      const rect = card.getBoundingClientRect();
+      card.style.setProperty('--mouse-x', `${e.clientX - rect.left}px`);
+      card.style.setProperty('--mouse-y', `${e.clientY - rect.top}px`);
+    });
+  });
+});
+
+/* ---- Slider fill update ---- */
+function updateSliderFill(slider) {
+  const min = +slider.min || 0;
+  const max = +slider.max || 100;
+  const val = +slider.value;
+  const pct = ((val - min) / (max - min)) * 100;
+  slider.style.setProperty('--slider-pct', pct + '%');
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+  document.querySelectorAll('.calc-slider').forEach(s => {
+    updateSliderFill(s);
+    s.addEventListener('input', () => updateSliderFill(s));
+  });
+});
+
+/* ---- Hero canvas — particle network ---- */
+function initCanvas() {
+  const canvas = document.getElementById('hero-canvas');
+  if (!canvas) return;
+  const ctx = canvas.getContext('2d');
+  let W, H, pts;
+
+  function resize() {
+    W = canvas.width  = canvas.parentElement.offsetWidth;
+    H = canvas.height = canvas.parentElement.offsetHeight;
+  }
+
+  function makePoints() {
+    pts = Array.from({ length: 36 }, () => ({
+      x: Math.random() * W,
+      y: Math.random() * H,
+      vx: (Math.random() - 0.5) * 0.35,
+      vy: (Math.random() - 0.5) * 0.35,
+      r: Math.random() * 1.6 + 0.4
+    }));
+  }
+
+  resize();
+  makePoints();
+  window.addEventListener('resize', () => { resize(); makePoints(); }, { passive: true });
+
+  function draw() {
+    ctx.clearRect(0, 0, W, H);
+    for (let i = 0; i < pts.length; i++) {
+      const p = pts[i];
+      p.x += p.vx; p.y += p.vy;
+      if (p.x < 0 || p.x > W) p.vx *= -1;
+      if (p.y < 0 || p.y > H) p.vy *= -1;
+
+      ctx.beginPath();
+      ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+      ctx.fillStyle = 'rgba(96,224,110,0.3)';
+      ctx.fill();
+
+      for (let j = i + 1; j < pts.length; j++) {
+        const q = pts[j];
+        const d = Math.hypot(p.x - q.x, p.y - q.y);
+        if (d < 130) {
+          ctx.beginPath();
+          ctx.moveTo(p.x, p.y);
+          ctx.lineTo(q.x, q.y);
+          ctx.strokeStyle = `rgba(96,224,110,${0.12 * (1 - d / 130)})`;
+          ctx.lineWidth = 0.7;
+          ctx.stroke();
+        }
+      }
+    }
+    requestAnimationFrame(draw);
+  }
+  draw();
+}
+
+/* ---- ROI Calculator ---- */
+function calcROI() {
+  const hours = +document.getElementById('sl-hours').value;
+  const rate  = +document.getElementById('sl-rate').value;
+  const eff   = +document.getElementById('sl-eff').value / 100;
+
+  document.getElementById('lbl-hours').textContent = hours + ' hrs';
+  document.getElementById('lbl-rate').textContent  = '$' + rate + '/hr';
+  document.getElementById('lbl-eff').textContent   = Math.round(eff * 100) + '%';
+
+  const weekly  = hours * rate * eff;
+  const monthly = Math.round(weekly * 4.33);
+  const annual  = Math.round(weekly * 52);
+
+  document.getElementById('res-monthly').textContent = '$' + monthly.toLocaleString();
+  document.getElementById('res-annual').textContent  = '$' + annual.toLocaleString();
+}
+
+/* ---- Contact form submit ---- */
+function handleSubmit(e) {
+  e.preventDefault();
+  const form    = document.getElementById('consultation-form');
+  const success = document.getElementById('form-success');
+  if (form && success) {
+    form.style.display = 'none';
+    success.style.display = 'block';
+  }
+}
+
+/* ---- Scroll reveal with IntersectionObserver ---- */
+function initReveal() {
+  const els = document.querySelectorAll('.reveal');
+  if (!('IntersectionObserver' in window)) {
+    els.forEach(el => el.classList.add('visible'));
+    return;
+  }
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        io.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+  els.forEach(el => io.observe(el));
+}
+
+/* ---- Animated stat counters ---- */
+function initCounters() {
+  const counters = document.querySelectorAll('.stat-value[data-target]');
+  if (!('IntersectionObserver' in window)) return;
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (!entry.isIntersecting) return;
+      const el = entry.target;
+      const target = +el.dataset.target;
+      const suffix = el.dataset.suffix || '+';
+      let start = 0;
+      const duration = 1800;
+      const step = timestamp => {
+        if (!start) start = timestamp;
+        const progress = Math.min((timestamp - start) / duration, 1);
+        const eased = 1 - Math.pow(1 - progress, 3);
+        el.textContent = Math.round(eased * target) + suffix;
+        if (progress < 1) requestAnimationFrame(step);
+      };
+      requestAnimationFrame(step);
+      io.unobserve(el);
+    });
+  }, { threshold: 0.5 });
+  counters.forEach(c => io.observe(c));
+}
+
+/* ---- Back to top ---- */
+function initBackToTop() {
+  const btn = document.getElementById('back-to-top');
+  if (!btn) return;
+  window.addEventListener('scroll', () => {
+    btn.classList.toggle('visible', window.scrollY > 500);
+  }, { passive: true });
+  btn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+}
+
+/* ---- Init all ---- */
+document.addEventListener('DOMContentLoaded', () => {
+  initCanvas();
+  calcROI();
+  initReveal();
+  initCounters();
+  initBackToTop();
+});
+</script>
+
 {{ end }}
